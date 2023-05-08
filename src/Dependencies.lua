@@ -68,6 +68,7 @@ gTextures = {
     ['bamboon-front'] = love.graphics.newImage('graphics/pokemon/bamboon-front.png'),
     ['cardiwing-back'] = love.graphics.newImage('graphics/pokemon/cardiwing-back.png'),
     ['cardiwing-front'] = love.graphics.newImage('graphics/pokemon/cardiwing-front.png'),
+    ['42tokyo'] = love.graphics.newImage('graphics/pokemon/42tokyo.png'),
 }
 
 gFrames = {
@@ -78,7 +79,8 @@ gFrames = {
 gFonts = {
     ['small'] = love.graphics.newFont('fonts/font.ttf', 8),
     ['medium'] = love.graphics.newFont('fonts/font.ttf', 16),
-    ['large'] = love.graphics.newFont('fonts/font.ttf', 32)
+    ['large'] = love.graphics.newFont('fonts/font.ttf', 32),
+    ['japanese'] = love.graphics.newFont('fonts/NotoSansJP-VariableFont_wght.ttf', 16)
 }
 
 gSounds = {
