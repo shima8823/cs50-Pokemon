@@ -25,10 +25,27 @@ function Selection:init(def)
     self.gapHeight = self.height / #self.items
 
     self.currentSelection = 1
+    self.onClose = def.onClose or function() end
+    self.canSelect = def.canSelect
+    if self.canSelect == nil then
+        self.canSelect = true
+    end
 end
 
 function Selection:update(dt)
-    if love.keyboard.wasPressed('up') then
+    if love.keyboard.wasPressed('return') or love.keyboard.wasPressed('enter') then
+        if self.canSelect then
+            self.items[self.currentSelection].onSelect()
+            
+            gSounds['blip']:stop()
+            gSounds['blip']:play()
+        else
+            gStateStack:pop()
+            self.onClose()
+        end
+    elseif not self.canSelect then
+        return
+    elseif love.keyboard.wasPressed('up') then
         if self.currentSelection == 1 then
             self.currentSelection = #self.items
         else
@@ -46,11 +63,6 @@ function Selection:update(dt)
         
         gSounds['blip']:stop()
         gSounds['blip']:play()
-    elseif love.keyboard.wasPressed('return') or love.keyboard.wasPressed('enter') then
-        self.items[self.currentSelection].onSelect()
-        
-        gSounds['blip']:stop()
-        gSounds['blip']:play()
     end
 end
 
@@ -61,7 +73,7 @@ function Selection:render()
         local paddedY = currentY + (self.gapHeight / 2) - self.font:getHeight() / 2
 
         -- draw selection marker if we're at the right index
-        if i == self.currentSelection then
+        if self.canSelect and i == self.currentSelection then
             love.graphics.draw(gTextures['cursor'], self.x - 8, paddedY)
         end
 
