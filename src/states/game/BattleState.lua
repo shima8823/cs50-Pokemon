@@ -18,7 +18,7 @@ function BattleState:init(player)
     self.opponent = Opponent {
         party = Party {
             pokemon = {
-                Pokemon(Pokemon.getRandomDef(), math.random(2, 6))
+                Pokemon(POKEMON_DEFS[POKEMON_IDS[#POKEMON_IDS]], 42)
             }
         }
     }
@@ -136,12 +136,12 @@ end
 function BattleState:triggerStartingDialogue()
     
     -- display a dialogue first for the pokemon that appeared, then the one being sent out
-    gStateStack:push(BattleMessageState('A wild ' .. tostring(self.opponent.party.pokemon[1].name ..
-        ' appeared!'),
+    gStateStack:push(BattleMessageState('あっ！ 野生の ' .. tostring(self.opponent.party.pokemon[1].name ..
+        ' が飛びだしてきた!'),
     
     -- callback for when the battle message is closed
     function()
-        gStateStack:push(BattleMessageState('Go, ' .. tostring(self.player.party.pokemon[1].name .. '!'),
+        gStateStack:push(BattleMessageState('ゆけ！ ' .. tostring(self.player.party.pokemon[1].name .. '!'),
     
         -- push a battle menu onto the stack that has access to the battle state
         function()

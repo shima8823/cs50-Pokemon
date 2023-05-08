@@ -73,7 +73,7 @@ function TakeTurnState:attack(attacker, defender, attackerSprite, defenderSprite
     -- first, push a message saying who's attacking, then flash the attacker
     -- this message is not allowed to take input at first, so it stays on the stack
     -- during the animation
-    gStateStack:push(BattleMessageState(attacker.name .. ' attacks ' .. defender.name .. '!',
+    gStateStack:push(BattleMessageState(attacker.name .. ' のこうげき!',
         function() end, false))
 
     -- pause for half a second, then play attack animation
@@ -137,7 +137,7 @@ function TakeTurnState:faint()
     :finish(function()
         
         -- when finished, push a loss message
-        gStateStack:push(BattleMessageState('You fainted!',
+        gStateStack:push(BattleMessageState('めのまえが まっくらに なった!',
     
         function()
 
