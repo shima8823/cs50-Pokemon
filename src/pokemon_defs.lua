@@ -7,7 +7,7 @@
 ]]
 
 POKEMON_IDS = {
-    'aardart', 'agnite', 'anoleaf', 'bamboon', 'cardiwing'
+    'aardart', 'agnite', 'anoleaf', 'bamboon', 'cardiwing', '42tokyo'
 }
 
 POKEMON_DEFS = {
@@ -75,5 +75,18 @@ POKEMON_DEFS = {
         attackIV = 4,
         defenseIV = 2,
         speedIV = 4
-    }
+    },
+	['42tokyo'] = {
+		name = '42tokyo',
+		battleSpriteFront = '42tokyo',
+		battleSpriteBack = '42tokyo',
+		baseHP = 42,
+		baseAttack = 42,
+		baseDefense = 42,
+		baseSpeed = 42,
+		HPIV = 42,
+		attackIV = 42,
+		defenseIV = 42,
+		speedIV = 42
+	}
 }
